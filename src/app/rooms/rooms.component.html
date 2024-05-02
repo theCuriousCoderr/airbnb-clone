@@ -377,7 +377,7 @@
                   <div *ngIf="dates === generateDaysArray(room.availability.bookedDates)[room.availability.bookedDates.length - 1] " class="absolute transition-all z-20 w-24 font-normal text-black text-xs bg-white p-2 bottom-[110%] hidden border rounded-sm group-hover:block"><p class="text-center">Check-out day</p></div>
                   <div *ngIf="!generateDaysArray(room.availability.bookedDates).includes(dates)" class="h-full w-full absolute z-10 flex items-center justify-center">
                     <div class="w-[40%] mx-auto h-[1px] bg-slate-400"></div>
-                  </div>
+                  </div> 
                   {{dates}}
                 </div>
               }
