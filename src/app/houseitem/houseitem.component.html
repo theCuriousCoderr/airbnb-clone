@@ -1,7 +1,7 @@
-<div
+<button
   id="{{ houseId }}"
   (click)="showmore(houseId)"
-  class="relative size-full bg-red-80 xl:h-auto"
+  class="group/button relative size-full bg-red-80 xl:h-auto text-left"
 >
   <div
     [ngClass]="{ hidden: !house.favorite }"
@@ -12,29 +12,44 @@
     >
       Guest favorite
     </p>
-   
   </div>
-  <div
- 
-  class="absolute bg-red-40 z-10 top-3 right-3"
->
-<div class="bg-gray-30 ">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke: rgba(255, 255, 255, 0.9); stroke-width: 2; overflow: visible;"><path d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z"></path></svg>
-</div>
- 
-</div>
-  
+  <button
+    class="absolute rounded-full p-1 z-10 top-3 right-3 flex items-center justify-center"
+  >
+    <div class="bg-gray-30">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 32 32"
+        aria-hidden="true"
+        role="presentation"
+        focusable="false"
+        style="
+          display: block;
+          fill: rgba(0, 0, 0, 0.5);
+          height: 24px;
+          width: 24px;
+          stroke: rgba(255, 255, 255, 0.9);
+          stroke-width: 2;
+          overflow: visible;
+        "
+      >
+        <path
+          d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z"
+        ></path>
+      </svg>
+    </div>
+  </button>
 
   <div class="relative group diary">
     <!-- open-close flap diary component -->
     <div
       class="absolute group-hover:-rotate-3 bottom-1 left-3 z-10 size-16 bg-transparent flex items-center perspective"
     >
-      <!-- down flap -->
+      <!-- diary down flap -->
       <div
         class="absolute transition-all group-hover:top-1 group-hover:left-1 group-hover:h-11 left-0 w-10 group-hover:w-10 h-12 bg-slate-300 border border-slate-800 rounded-r-md"
       ></div>
-      <!-- top flap -->
+      <!-- diary top flap -->
       <div
         class="group absolute transition-all group-hover:top-0 group w-10 h-12 bg-slate-100 rounded-r-md flex items-center justify-center cover shadow-sm shadow-slate-800"
       >
@@ -46,7 +61,7 @@
             class="size-full object-cover rounded-full"
           />
         </div>
-        <!-- book binding  -->
+        <!-- diary book binding  -->
         <div
           class="absolute -left-1 -top-[1px] w-1 h-[50px] border-[.2px] border-slate-400 bg-slate-100 rounded-xl"
         ></div>
@@ -54,19 +69,19 @@
     </div>
 
     <!-- prev/next button hover bubble on houseitem  -->
-    <div
+    <button
       (click)="swipe($event, 'prev')"
-      class="hidden group-hover:flex absolute top-1/2 left-3 size-8 rounded-full bg-white bg-opacity-90 transition-all z-20 items-center justify-center"
+      class="hidden group-focus-within/button:flex group-hover:flex absolute top-1/2 left-3 size-8 rounded-full bg-white bg-opacity-90 transition-all z-20 items-center justify-center"
     >
-    <img src="../../assets/images/backicon.png" />
-    </div>
-    <div
+      <img src="../../assets/images/backicon.png" />
+    </button>
+    <button
       (click)="swipe($event, 'next')"
-      class="hidden group-hover:flex absolute top-1/2 right-3 size-8 rounded-full bg-white bg-opacity-90 transition-all z-20 items-center justify-center"
+      class="hidden group-focus-within/button:flex group-hover:flex absolute top-1/2 right-3 size-8 rounded-full bg-white bg-opacity-90 transition-all z-20 items-center justify-center"
     >
-    <img src="../../assets/images/fronticon.png" />
-    </div>
-     <!-- prev/next button hover bubble on houseitem  -->
+      <img src="../../assets/images/fronticon.png" />
+    </button>
+    <!-- prev/next button hover bubble on houseitem  -->
 
     <swiper-container
       slides-per-view="1"
@@ -95,26 +110,45 @@
         *ngIf="!beforeTaxes"
         class="text-base font-medium xl:font-normal text-slate-800"
       >
-        <span class="text-base font-medium text-black"
-          >{{ house.pricing.priceAfterTax }}</span
-        >
+        <span class="text-base font-medium text-black">{{
+          house.pricing.priceAfterTax
+        }}</span>
         night
       </p>
       <p
         *ngIf="beforeTaxes"
         class="text-base font-medium xl:font-normal text-slate-800 underline"
       >
-        <span class="text-base font-medium text-black"
-          >{{ house.pricing.priceBeforeTax }}</span
-        >
+        <span class="text-base font-medium text-black">{{
+          house.pricing.priceBeforeTax
+        }}</span>
         total before taxes
       </p>
     </div>
     <div class="flex items-center gap-1 bg-red-60">
       <div class="flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="14px" viewBox="0 0 24 24" width="14px" fill="#000000"><g><path d="M0 0h24v24H0V0z" fill="none"/><path d="M0 0h24v24H0V0z" fill="none"/></g><g><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></g></svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          enable-background="new 0 0 24 24"
+          height="14px"
+          viewBox="0 0 24 24"
+          width="14px"
+          fill="#000000"
+        >
+          <g>
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M0 0h24v24H0V0z" fill="none" />
+          </g>
+          <g>
+            <path
+              d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"
+            />
+          </g>
+        </svg>
       </div>
-      <p class="text-base font-normal text-slate-700">{{ house.reviews.starRating }}</p>
+      <p class="text-base font-normal text-slate-700">
+        {{ house.reviews.starRating }}
+      </p>
     </div>
   </div>
-</div>
+</button>
